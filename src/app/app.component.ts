@@ -438,7 +438,7 @@ export class AppComponent implements OnInit {
       console.log(originalimg);
       originalimg = tf.reverse(originalimg, -1)
       console.log("reverse", originalimg)
-      let img = originalimg.reshapeAs(tensor4d([1,140,140,3]));
+      let img = originalimg.reshape([1,140,140,3]);
       console.log("reshape")
       img = tf.cast(img, 'float32');
 
@@ -583,7 +583,7 @@ export class AppComponent implements OnInit {
       console.log(originalimg);
       originalimg = tf.reverse(originalimg, -1)
       console.log("reverse", originalimg)
-      let img = originalimg.reshapeAs(tensor4d([1,140,140,3]));
+      let img = originalimg.reshape([1,140,140,3]);
       console.log("reshape")
       img = tf.cast(img, 'float32');
       console.log("cast")

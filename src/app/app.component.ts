@@ -408,6 +408,7 @@ export class AppComponent implements OnInit {
   public ngOnInit() {
     console.log("init")
     this.loadModel();
+    this.capture();
   }
 
   async loadModel() {
@@ -701,10 +702,18 @@ export class AppComponent implements OnInit {
   }
 
   public capture() {
-    this._timer = setInterval(() => {
-      var context = this.canvas.nativeElement.getContext("2d").drawImage(this.video.nativeElement, 0, 0, 640, 480);
-      this.captures.push(this.canvas.nativeElement.toDataURL("image/png"));
-    }, 5000);
+    let self = this
+    document.addEventListener("keydown", function (event) {
+      if(event.key == " "){
+        console.log("sauce")
+      var context =self.canvas.nativeElement.getContext("2d").drawImage(self.video.nativeElement, 0, 0, 640, 480);
+      self.captures.push(self.canvas.nativeElement.toDataURL("image/png"));
+      }
+    })
+    // this._timer = setInterval(() => {
+    //   var context = this.canvas.nativeElement.getContext("2d").drawImage(this.video.nativeElement, 0, 0, 640, 480);
+    //   this.captures.push(this.canvas.nativeElement.toDataURL("image/png"));
+    // }, 5000);
   }
 
   public capture2() {

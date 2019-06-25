@@ -111,7 +111,7 @@
                       <!--  <img #imageInput  src="assets/images/img1.jpg"  id="box1" (load)="predict(imageInput)"  *ngIf="showfirst5">
                       <img #imageInput src="assets/images/img3.jpg"  id="box2" (load)="predict2(imageInput)"  *ngIf="showfirst6">  --> 
 
-                      <canvas  height="140px" width="140px"   id="box1"   (click)="capture()" *ngIf="showfirst5"></canvas>
+                      <canvas  height="140px" width="140px"   id="box1"   ng-keydown=capture() *ngIf="showfirst5"></canvas>
                       
                       <!-- <canvas  height="140px" width="140px"   id="box2" (click)="capture2()"  *ngIf="showfirst6"> </canvas>  -->
 

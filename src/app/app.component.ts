@@ -129,7 +129,23 @@ export class AppComponent implements OnInit {
   score1 = 0;
   score2 = 0;
 
+  indexOfMax(arr:number[]):number {
+    if (arr.length === 0) {
+        return -1;
+    }
 
+    var max = arr[0];
+    var maxIndex = 0;
+
+    for (var i = 1; i < arr.length; i++) {
+        if (arr[i] > max) {
+            maxIndex = i;
+            max = arr[i];
+        }
+    }
+
+    return maxIndex;
+}
 
   start2() {
     if (this.timeBegan === null) {
@@ -450,10 +466,12 @@ export class AppComponent implements OnInit {
       console.log(output)
       // Save predictions on the component 
       this.predictions = Array.from(output.dataSync());
-      console.log(this.predictions)
+      let index = this.indexOfMax(this.predictions)
+      console.log("Index: ", index )
+      console.log("Predictions: ", this.predictions)
       this.show = true;
       while (this.show) {
-        if (this.arraysEqual(this.array1, this.predictions)) {
+        if (index === 0) {
 
           this.showright = false;
           this.showleft = true;
@@ -463,7 +481,7 @@ export class AppComponent implements OnInit {
 
         }
 
-        else if (this.arraysEqual(this.array2, this.predictions)) {
+        else if (index === 1) {
 
           this.showright = false;
           this.showleft = true;
@@ -473,7 +491,7 @@ export class AppComponent implements OnInit {
 
 
         }
-        else if (this.arraysEqual(this.array3, this.predictions)) {
+        else if (index === 2) {
           this.showright = false;
           this.showleft = true;
           this.showfirst22 = true;
@@ -482,7 +500,7 @@ export class AppComponent implements OnInit {
 
 
         }
-        else if (this.arraysEqual(this.array4, this.predictions)) {
+        else if (index === 3) {
 
           this.showright = false;
           this.showleft = true;
@@ -493,7 +511,7 @@ export class AppComponent implements OnInit {
           this.score1 += 1;
 
         }
-        else if (this.arraysEqual(this.array5, this.predictions)) {
+        else if (index === 4) {
           this.showright = false;
           this.showleft = true;
           this.showfirst24 = true;
@@ -501,7 +519,7 @@ export class AppComponent implements OnInit {
           this.score1 += 1;
 
         }
-        else if (this.arraysEqual(this.array6, this.predictions)) {
+        else if (index ===5) {
 
           this.showright = false;
           this.showleft = true;
@@ -511,7 +529,7 @@ export class AppComponent implements OnInit {
 
 
         }
-        else if (this.arraysEqual(this.array7, this.predictions)) {
+        else if (index === 6) {
 
           this.showright = false;
           this.showleft = true;
@@ -520,7 +538,7 @@ export class AppComponent implements OnInit {
           this.score1 += 1;
 
         }
-        else if (this.arraysEqual(this.array8, this.predictions)) {
+        else if (index === 7) {
           console.log("ok")
           this.showright = false;
           this.showleft = true;
@@ -529,7 +547,7 @@ export class AppComponent implements OnInit {
           this.score1 += 1;
 
         }
-        else if (this.arraysEqual(this.array9, this.predictions)) {
+        else if (index === 8) {
           this.showright = false;
           this.showleft = true;
           this.showfirst28 = true;
@@ -537,7 +555,7 @@ export class AppComponent implements OnInit {
           this.score1 += 1;
 
         }
-        else if (this.arraysEqual(this.array10, this.predictions)) {
+        else if (index === 9) {
           this.showright = false;
           this.showleft = true;
           this.showfirst29 = true;
@@ -546,7 +564,7 @@ export class AppComponent implements OnInit {
 
         }
 
-        else if (this.arraysEqual(this.array11, this.predictions)) {
+        else if (index ===10) {
           this.showright = false;
           this.showleft = true;
           this.showfirst30 = true;
@@ -704,7 +722,7 @@ export class AppComponent implements OnInit {
   public capture() {
     let self = this
     document.addEventListener("keydown", function (event) {
-      if(event.key == " "){
+      if(event.key == "f"){
         console.log("sauce")
       var context =self.canvas.nativeElement.getContext("2d").drawImage(self.video.nativeElement, 0, 0, 640, 480);
       self.captures.push(self.canvas.nativeElement.toDataURL("image/png"));
